@@ -37,7 +37,7 @@ def main():
 
     m = folium.Map(location=[37.53897093698831, 127.05461953077439], 
                zoom_start=12, 
-               )
+               ) #ㅡㅐㅡㅐ
     for i in range(len(hospital_locations)):
         folium.Marker(location=hospital_locations[i], tooltip = f"{facility_names[i]} {phone_numbers[i]}").add_to(m)
     m.save('C:\\Users\\monog\\OneDrive\\바탕 화면\\Python_Project\\Animore\\momo.html') #다 안뜨는 오류...
