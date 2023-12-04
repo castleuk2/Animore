@@ -7,14 +7,14 @@ class ReviewSystem:
             reviews = self.centers[center_name]['reviews']
             reviews.append({'평점': rating, '리뷰': review})
 
-            # Calculate the updated average rating
+            # 업데이트된 평균 평점 계산
             total_ratings = sum(review['평점'] for review in reviews)
             average_rating = total_ratings / len(reviews)
 
-            # Update the center's average rating
+            # 센터의 평균 등급 업데이트
             self.centers[center_name]['average_rating'] = average_rating
 
-            # Update the center_list with the new reviews
+            # 새로운 리뷰로 center_list 업데이트
             for center in center_list:
                if center[0] == center_name:
                 if len(center) >= 6:
@@ -30,10 +30,32 @@ class ReviewSystem:
             print(f"{center_name} 병원 리스트에서 해당 병원을 찾을 수 없습니다2.")
 
     def write_review_interaction(self,center_list):
-        center_name = input("\n리뷰를 작성하시겠습니까? 다녀온 병원 이름을 입력하세요. (나가기: 'exit'): ")
-        if center_name.lower() == 'exit':
-            return
-
-        rating = int(input("평점을 매겨주세요. (0-5): "))
-        review = input("리뷰를 작성해주세요. : ")
-        self.add_review( center_list, center_name, rating, review)
+        while True:
+            center_name = input("리뷰를 작성하시겠습니까? 다녀온 병원 이름을 입력하세요. (나가기: 'exit'): ")
+            if center_name.lower() == 'exit':
+                return
+                    
+            # 병원이 있는지 확인
+            if center_name not in [center[0] for center in center_list]:
+                print(f"{center_name}이란 병원을 리스트에서 찾을 수 없습니다. 다시 입력해주세요.")
+                continue
+            
+            while True:
+                try:
+                    rating = int(input("평점을 매겨주세요. (0, 1, 2, 3, 4, 5): "))
+                    if 0 <= rating <= 5:
+                        break
+                    else:
+                        print("0 부터 5 사이의 정수만 입력 가능합니다. 다시 입력해주세요.")
+                except ValueError:
+                    print("0 부터 5 사이의 정수만 입력 가능합니다. 다시 입력해주세요.")
+                  
+            while True:
+                review = input("리뷰를 작성해주세요. : ")
+                if review.strip():
+                    break
+                else:
+                    print("리뷰란을 비워둘 수 없습니다. 다시 입력해주세요.")
+            
+            self.add_review( center_list, center_name, rating, review)
+            break
