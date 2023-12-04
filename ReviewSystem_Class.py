@@ -41,18 +41,28 @@ class ReviewSystem:
             
             while True:
                 try:
-                    rating = int(input("평점을 매겨주세요. (0, 1, 2, 3, 4, 5): "))
+                    rating_input = input("평점을 매겨주세요. (0, 1, 2, 3, 4, 5) (나가기: 'exit'): ")
+                    
+                    if rating_input.lower() == 'exit':
+                        return  
+
+                    rating = int(rating_input)
                     if 0 <= rating <= 5:
                         break
+                                    
                     else:
                         print("0 부터 5 사이의 정수만 입력 가능합니다. 다시 입력해주세요.")
                 except ValueError:
                     print("0 부터 5 사이의 정수만 입력 가능합니다. 다시 입력해주세요.")
                   
             while True:
-                review = input("리뷰를 작성해주세요. : ")
-                if review.strip():
+                review = input("리뷰를 작성해주세요. (나가기: 'exit') : ")
+                if review.lower() == 'exit':
+                    return
+                
+                elif review.strip():
                     break
+                
                 else:
                     print("리뷰란을 비워둘 수 없습니다. 다시 입력해주세요.")
             
