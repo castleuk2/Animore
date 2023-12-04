@@ -57,4 +57,3 @@ class ReviewSystem:
                     print("리뷰란을 비워둘 수 없습니다. 다시 입력해주세요.")
             
             self.add_review( center_list, center_name, rating, review)
-            break
