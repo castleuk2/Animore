@@ -42,32 +42,14 @@ def main():
         folium.Marker(location=hospital_locations[i], tooltip = f"{facility_names[i]} {phone_numbers[i]}").add_to(m)
     m.save('C:\\Users\\monog\\OneDrive\\바탕 화면\\Python_Project\\Animore\\momo.html') #다 안뜨는 오류...
     
+    customer1.appoint_Center()
+    appoint_center = Center()
+    appoint = AppointSystem()
+    appoint.request_appoint()
+    appoint_center.accept_appoint(appoint.patient_info, appoint.time)
+
     review_system = ReviewSystem(center_list)
-    while True:
-        
-        if customer1.appoint_Center():
-            appoint_center = Center()
-            appoint = AppointSystem()
-            appoint.request_appoint()
-            appoint_center.accept_appoint(appoint.patient_info, appoint.time)
-            
-
-
-            center_name = input("\n리뷰를 작성하시겠습니까? 다녀온 병원 이름을 입력하세요. (종료: 'exit'): ")
-
-            if center_name.lower() == 'exit':
-                break
-
-            rating = int(input("평점을 매겨주세요. (0-5): "))
-            review = input("리뷰를 작성해주세요. : ")
-            review_system.add_review(center_list, center_name, rating, review)
-
-            view_reviews = input("이 센터의 모든 리뷰를 보시겠습니까? (y/n): ")
-            if view_reviews.lower() == 'y':
-                review_system.view_reviews(center_name)
-
-        else:
-            print("종료")
+    review_system.write_review_interaction(center_list)
 
     
 
