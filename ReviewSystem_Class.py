@@ -26,8 +26,7 @@ class ReviewSystem:
 
             print(f"{center_name}의 리뷰가 추가 되었습니다!")
             print(center_list)
-        else:
-            print(f"{center_name} 병원 리스트에서 해당 병원을 찾을 수 없습니다2.")
+       
 
     def write_review_interaction(self,center_list):
         while True:
