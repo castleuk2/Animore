@@ -1,33 +1,19 @@
 class ReviewSystem:
-    def __init__(self, center_list):
-        self.centers = {center[0]: {'address': center[1], 'phone': center[2], 'reviews': []} for center in center_list}
-  
-    def add_review(self, center_list, center_name, rating, review):
+    def __init__(self, center_list, file_path):
+        self.centers = {center[0]: {'address': center[1], 'phone': center[2], 'reviews': []} for center in
+                        center_list}
+        self.file_path = file_path
+
+    def add_review(self, center_name, rating, review):
         if center_name in self.centers:
             reviews = self.centers[center_name]['reviews']
             reviews.append({'평점': rating, '리뷰': review})
 
-            # 업데이트된 평균 평점 계산
-            total_ratings = sum(review['평점'] for review in reviews)
-            average_rating = total_ratings / len(reviews)
-
-            # 센터의 평균 등급 업데이트
-            self.centers[center_name]['average_rating'] = average_rating
-
-            # 새로운 리뷰로 center_list 업데이트
-            for center in center_list:
-               if center[0] == center_name:
-                if len(center) >= 6:
-                    center[4] = average_rating
-                    center[5] = reviews
-                else:
-                    center.extend([average_rating, reviews])
-                break
-
-            print(f"{center_name}의 리뷰가 추가 되었습니다!")
-            print(center_list)
-       
-
+            # csv파일 업데이트 새로운 데이터로
+            save_system = SaveSystem(self.file_path)
+            save_system.update_reviews(center_name, rating, review)
+            print(f"{center_name}의 리뷰가 추가 되었습니다!")         
+         
     def write_review_interaction(self,center_list):
         while True:
             center_name = input("리뷰를 작성하시겠습니까? 다녀온 병원 이름을 입력하세요. (나가기: 'exit'): ")
@@ -68,4 +54,4 @@ class ReviewSystem:
             else:
                 print("리뷰란을 비워둘 수 없습니다. 다시 입력해주세요.")
         
-        self.add_review( center_list, center_name, rating, review)
+        self.add_review(center_name, rating, review)
