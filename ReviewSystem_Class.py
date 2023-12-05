@@ -29,15 +29,17 @@ class ReviewSystem:
        
 
     def write_review_interaction(self,center_list):
-        while True:
-            center_name = input("리뷰를 작성하시겠습니까? 다녀온 병원 이름을 입력하세요. (나가기: 'exit'): ")
-            if center_name.lower() == 'exit':
-                return
-                    
-            # 병원이 있는지 확인
-            if center_name not in [center[0] for center in center_list]:
-                print(f"{center_name}이란 병원을 리스트에서 찾을 수 없습니다. 다시 입력해주세요.")
-                continue
+            while True:
+                    center_name = input("리뷰를 작성하시겠습니까? 다녀온 병원 이름을 입력하세요. (나가기: 'exit'): ")
+                        
+                    if center_name.lower() == 'exit':
+                        return
+                        
+                    # 병원이 있는지 확인
+                    if center_name in [center[0] for center in center_list]:
+                        break                    
+                    elif center_name not in [center[0] for center in center_list]:
+                        continue
             
             while True:
                 try:
