@@ -9,24 +9,47 @@ class Pet: # Customer 객체 생성시 사용. C++ struct와 같이 여러 인�
         return f"이름: {self.name}, 나이: {self.age}, 종류: {self.type}"
 class Customer:
     customerID = 1
+
     def __init__(self):
-        try:
-            customer_info = input("사용자의 이름, 전화번호, 주소를 쉼표로 구분하여 입력해 주세요: ").split(',')
-        except:
-            IndexError
+        while True:
+            try:
+                customer_info = input("사용자의 이름, 전화번호, 주소를 쉼표로 구분하여 입력해 주세요: ").split(',')
+                if len(customer_info) == 3:
+                    break
+                else:
+                    print("잘못된 형식입니다. 다시 입력해주세요.")
+            except KeyboardInterrupt:
+                print("\n프로그램을 종료합니다.")
+                exit()
+            except Exception as e:
+                print(f"에러 발생: {e}")
+                print("적절하지 않은 입력입니다. 다시 시도해주세요.")
+
         self.name = customer_info[0]
         self.number = customer_info[1].strip()
         self.address = customer_info[2].strip()
-        N = int(input("반려동물이 총 몇 마리 인가요?")) 
+        
         pets = []
-        for i in range(N): 
-            pet_info = input("반려동물의 이름, 나이, 종류를 쉼표로 구분하여 입력해 주세요: ").split(',')
+        N = int(input("반려동물이 총 몇 마리 인가요?"))
+        for i in range(N):
+            while True:
+                try:
+                    pet_info = input("반려동물의 이름, 나이, 종류를 쉼표로 구분하여 입력해 주세요: ").split(',')
+                    if len(pet_info) == 3:
+                        break
+                    else:
+                        print("잘못된 형식입니다. 다시 입력해주세요.")
+                except Exception as e:
+                    print(f"에러 발생: {e}")
+                    print("적절하지 않은 입력입니다. 다시 시도해주세요.")
+                
             pet = Pet(pet_info[0], int(pet_info[1].strip()), pet_info[2].strip())
             pets.append(pet)
         self.pets = pets
         self.customerID = Customer.customerID
-        
+
         Customer.customerID += 1
+
     def __str__(self):  # 객체를 문자열로 표현하는 메소드
         pet_info = '\n'.join(str(pet) for pet in self.pets)
         return f"고객 ID: {self.customerID}\n이름: {self.name}\n전화번호: {self.number}\n주소: {self.address}\n반려동물 정보:\n{pet_info}"  
