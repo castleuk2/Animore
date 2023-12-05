@@ -31,9 +31,20 @@ class Customer:
         pet_info = '\n'.join(str(pet) for pet in self.pets)
         return f"고객 ID: {self.customerID}\n이름: {self.name}\n전화번호: {self.number}\n주소: {self.address}\n반려동물 정보:\n{pet_info}"  
      
-    def contact_SaveSys(self): # 주소(문자열)로 검색, ... 검색 방식 여러가지?
-        Centeraddress = input("검색할 주소를 입력하세요: ")
-        return Centeraddress
+    def contact_SaveSys(self, save_list):
+        while True:
+            Centeraddress = input("검색할 주소를 입력하세요: ")
+            try:
+                result = save_list.filter_data_by_region(Centeraddress)
+                if not result.empty:
+                    return Centeraddress
+                else:
+                    print("")
+            except KeyboardInterrupt:
+                print("\n프로그램을 종료합니다.")
+                exit()
+            except:
+                print("")
    
 
     def appoint_Center(self):
