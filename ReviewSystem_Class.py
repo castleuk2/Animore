@@ -29,43 +29,43 @@ class ReviewSystem:
        
 
     def write_review_interaction(self,center_list):
-            while True:
-                    center_name = input("리뷰를 작성하시겠습니까? 다녀온 병원 이름을 입력하세요. (나가기: 'exit'): ")
-                        
-                    if center_name.lower() == 'exit':
-                        return
-                        
-                    # 병원이 있는지 확인
-                    if center_name in [center[0] for center in center_list]:
-                        break                    
-                    elif center_name not in [center[0] for center in center_list]:
-                        continue
-            
-            while True:
-                try:
-                    rating_input = input("평점을 매겨주세요. (0, 1, 2, 3, 4, 5) (나가기: 'exit'): ")
+        while True:
+                center_name = input("리뷰를 작성하시겠습니까? 다녀온 병원 이름을 입력하세요. (나가기: 'exit'): ")
                     
-                    if rating_input.lower() == 'exit':
-                        return  
-
-                    rating = int(rating_input)
-                    if 0 <= rating <= 5:
-                        break
-                                    
-                    else:
-                        print("0 부터 5 사이의 정수만 입력 가능합니다. 다시 입력해주세요.")
-                except ValueError:
-                    print("0 부터 5 사이의 정수만 입력 가능합니다. 다시 입력해주세요.")
-                  
-            while True:
-                review = input("리뷰를 작성해주세요. (나가기: 'exit') : ")
-                if review.lower() == 'exit':
+                if center_name.lower() == 'exit':
                     return
+                    
+                # 병원이 있는지 확인
+                if center_name in [center[0] for center in center_list]:
+                    break                    
+                elif center_name not in [center[0] for center in center_list]:
+                    continue
+        
+        while True:
+            try:
+                rating_input = input("평점을 매겨주세요. (0, 1, 2, 3, 4, 5) (나가기: 'exit'): ")
                 
-                elif review.strip():
+                if rating_input.lower() == 'exit':
+                    return  
+
+                rating = int(rating_input)
+                if 0 <= rating <= 5:
                     break
-                
+                                
                 else:
-                    print("리뷰란을 비워둘 수 없습니다. 다시 입력해주세요.")
+                    print("0 부터 5 사이의 정수만 입력 가능합니다. 다시 입력해주세요.")
+            except ValueError:
+                print("0 부터 5 사이의 정수만 입력 가능합니다. 다시 입력해주세요.")
+              
+        while True:
+            review = input("리뷰를 작성해주세요. (나가기: 'exit') : ")
+            if review.lower() == 'exit':
+                return
             
-            self.add_review( center_list, center_name, rating, review)
+            elif review.strip():
+                break
+            
+            else:
+                print("리뷰란을 비워둘 수 없습니다. 다시 입력해주세요.")
+        
+        self.add_review( center_list, center_name, rating, review)
