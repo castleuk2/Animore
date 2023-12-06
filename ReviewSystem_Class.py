@@ -12,8 +12,7 @@ class ReviewSystem:
 
             # csv파일 업데이트 새로운 데이터로
             save_system = SaveSystem(self.file_path)
-            save_system.update_reviews(center_name, rating, review)
-            print(f"{center_name}의 리뷰가 추가 되었습니다!")         
+            save_system.update_reviews(center_name, rating, review)        
          
     def write_review_interaction(self,center_list):
         while True:
