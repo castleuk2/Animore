@@ -1,3 +1,4 @@
+# start here
 class ReviewSystem:
     def __init__(self, center_list, file_path):
         self.centers = {center[0]: {'address': center[1], 'phone': center[2], 'reviews': []} for center in
@@ -55,3 +56,4 @@ class ReviewSystem:
                 print("리뷰란을 비워둘 수 없습니다. 다시 입력해주세요.")
         
         self.add_review(center_name, rating, review)
+# end here
