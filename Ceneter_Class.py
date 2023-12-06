@@ -1,4 +1,5 @@
 # start here
+from Savesystem_Class import SaveSystem
 class Center:
     def __init__(self):
         center_name = input("예약을 희망하는 병원 이름을 입력해주세요.")
