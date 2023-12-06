@@ -54,7 +54,7 @@ class SaveSystem:
             # csv파일에 저장
             self.df.to_csv(self.file_path, index=False, encoding='euc-kr')
 
-            print(f"{center_name}의 리뷰가 추가되었습니다!")
+            print(f"{center_name}의 리뷰가 추가 되었습니다!")
         else:
             print(f"{center_name}을 찾을 수 없습니다.")
 # end here
