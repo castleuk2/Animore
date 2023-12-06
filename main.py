@@ -49,7 +49,7 @@ def main():
         appoint.request_appoint()
         appoint_center.accept_appoint(appoint.patient_info, appoint.time)
     
-        review_system = ReviewSystem(center_list)
+        review_system = ReviewSystem(center_list,file_path)
         review_system.write_review_interaction(center_list)
 
     
