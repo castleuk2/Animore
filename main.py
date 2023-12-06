@@ -9,7 +9,7 @@ from AppointSystem_Class import AppointSystem
 from ReviewSystem_Class import ReviewSystem
 from Ceneter_Class import Center
 
-from folium_func import real_address, geocoding, phone_number, facility_name
+from folium_func import real_address, geocoding, phone_number, facility_name, get_locations
 def main():
     while True:
         customer1 = Customer()
