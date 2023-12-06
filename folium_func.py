@@ -45,3 +45,14 @@ def facility_name(filtered_data):
             modified_names = " ".join(a[:4])
             modified_nameses.append(modified_names)
         return modified_nameses
+def get_locations(addresses):
+    latitude = []
+    longitude = []
+
+    for i in addresses:
+            latitude.append(geocoding(i)[0])
+            longitude.append(geocoding(i)[1])
+    hospital_locations = []
+    for lat, lon in zip(latitude, longitude):
+        hospital_locations.append([lat, lon])
+    return hospital_locations
