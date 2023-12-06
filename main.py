@@ -16,7 +16,7 @@ def main():
         print(customer1)
         file_path = "C:\\Users\\monog\\OneDrive\\바탕 화면\\Python_Project\\Animore\\center.csv"
         save_list = SaveSystem(file_path)
-        find_address = customer1.contact_SaveSys()
+        find_address = customer1.contact_SaveSys(save_list)
         result = save_list.filter_data_by_region(find_address)
         center_list = result.values.tolist()
         print(center_list)
