@@ -40,7 +40,7 @@ class SaveSystem:
             review_index = self.df.at[index, '리뷰갯수']
 
             # 새 리뷰를 기존 리뷰와 연결
-            updated_review = f"{existing_reviews}\n{review_index + 1}. Rating: {rating}, Review: {review}" if existing_reviews else f"{review_index + 1}. Rating: {rating}, Review: {review}"
+            updated_review = f"{existing_reviews}\n{review_index + 1}) 평점: {rating} / 리뷰: {review}" if existing_reviews else f"{review_index + 1}. Rating: {rating}, Review: {review}"
 
             # 리뷰,평점 업데이트
             if existing_reviews:
