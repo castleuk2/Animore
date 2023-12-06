@@ -1,3 +1,4 @@
+#starthere
 import pandas as pd
 from geopy.geocoders import Nominatim
 import folium
@@ -56,3 +57,5 @@ def get_locations(addresses):
     for lat, lon in zip(latitude, longitude):
         hospital_locations.append([lat, lon])
     return hospital_locations
+
+#endhere
