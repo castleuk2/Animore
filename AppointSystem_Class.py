@@ -1,3 +1,4 @@
+# start here
 class AppointSystem:
     def __init__(self):
         while True:
@@ -24,3 +25,4 @@ class AppointSystem:
                 break
             except Exception as e:
                 print(f"에러 발생: {e}")
+# end here
