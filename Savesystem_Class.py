@@ -44,8 +44,8 @@ class SaveSystem:
 
             # 리뷰,평점 업데이트
             if existing_reviews:
-                total_ratings = average_rating * len(existing_reviews.split('\n')) + rating
-                new_average_rating = total_ratings / (len(existing_reviews.split('\n')) + 1)
+                total_ratings = average_rating * len(str(existing_reviews).split('\n')) + rating
+                new_average_rating = total_ratings / (len(str(existing_reviews).split('\n')) + 1)
             else:
                 new_average_rating = rating
 
