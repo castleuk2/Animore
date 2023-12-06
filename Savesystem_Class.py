@@ -1,3 +1,4 @@
+# start here
 class SaveSystem:
     def __init__(self, file_path):
         self.file_path = file_path
@@ -15,7 +16,7 @@ class SaveSystem:
         except KeyError:
             print("잘못된 지역입니다. 다시 입력해주세요.")
             return []
-# start here
+
     def update_reviews(self, center_name, rating, review):
         if '리뷰갯수' not in self.df.columns:
             self.df['리뷰갯수'] = 0
